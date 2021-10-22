@@ -1,0 +1,15 @@
+/* .example-card {
+    max-width: 400px;
+  } */
+section {
+    display: table;
+}
+.example-card {
+    font-size: 14px;
+    margin-left: 8px;
+    max-width: 500px;
+  } 
+/* .example-button-row {
+    display: table-cell;
+    width: 490px;
+} */
