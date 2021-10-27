@@ -1,15 +1,34 @@
 /* .example-card {
     max-width: 400px;
   } */
-section {
-    display: table;
+
+
+.search-bar{
+    font-size: 14px;
+    margin-left: 8px;
+    max-width: 500px;
+    margin: auto; 
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .example-card {
     font-size: 14px;
     margin-left: 8px;
     max-width: 500px;
+    margin: auto; 
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color:darkgrey;
+    color: black;
   } 
+  .favorite {
+    border-radius: 50%;
+    border: none;
+  }
+
+ 
 /* .example-button-row {
     display: table-cell;
     width: 490px;
 } */
+

@@ -4,6 +4,7 @@ import { ApodRequestGetComponent } from './apod-request-get/apod-request-get.com
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CommonModule,
     MatCardModule,
     MatGridListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatIconModule
   ],
   exports: [
     ApodRequestGetComponent

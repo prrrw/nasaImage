@@ -9,36 +9,39 @@ import { ApodArray } from './apod-request-get';
   styleUrls: ['./apod-request-get.component.css']
 })
 export class ApodRequestGetComponent implements OnInit {
+
+  isResponseIsArray: boolean = true;
   
+  baseURL = 'https://api.nasa.gov/planetary/apod?api_key=dSY0Zt162OcXRYLWsManwjxu3qZF8pLbS7gAjfSA'
   apodList: ApodArray[] = [];
-  apodSearchResult: ApodArray = {
-    date: '',
-    explanation: '',
-    hdurl: '',
-    media_type: '',
-    service_version: '',
-    title: '',
-    url: ''
-  };
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    
-    // this.http.get<ApodArray[]>('https://api.nasa.gov/planetary/apod?api_key=dSY0Zt162OcXRYLWsManwjxu3qZF8pLbS7gAjfSA&count=10')
-    // .subscribe(response=>{
-    //   console.log('response', response);
-    //   this.apodList = response;
-    // });
+    this.http.get<ApodArray[]>(this.baseURL + '&count=10')
+    .subscribe(response=>{
+      this.apodList = response;
+    });
   }
     
-    searchApodList(date: string){
-      this.http.get<ApodArray>('https://api.nasa.gov/planetary/apod?api_key=dSY0Zt162OcXRYLWsManwjxu3qZF8pLbS7gAjfSA&date='+date)
-    .subscribe(response=>{
-      console.log('response', response);
-      this.apodSearchResult = response;
-      console.log("Hello", date);
-    });
+  searchApodList(specificDate: string, startedDate: string, endedDate: string){
+    if(specificDate != ""){
+      this.http.get<ApodArray>(this.baseURL +'&date='+specificDate)
+      .subscribe(response=>{
+          this.apodList[0] = response;
+      });
+    }else if(startedDate != "" && endedDate != ""){
+      this.http.get<ApodArray[]>(this.baseURL + '&start_date='+ startedDate+'&end_date='+endedDate)
+      .subscribe(response=>{
+        this.apodList = response;
+      });
     }
   }
 
-
+  checkSearchResult(specificDate: string, startedDate: string, endedDate: string){
+    if(specificDate != ""){
+      this.isResponseIsArray = false
+    }else{
+      this.isResponseIsArray = true
+    }
+  }
+}
