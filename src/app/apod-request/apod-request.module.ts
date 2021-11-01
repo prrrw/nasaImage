@@ -5,7 +5,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatButtonModule} from '@angular/material/button';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     ApodRequestGetComponent
@@ -15,7 +18,11 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatGridListModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    BrowserModule,
+    FormsModule,
+    MatExpansionModule
   ],
   exports: [
     ApodRequestGetComponent

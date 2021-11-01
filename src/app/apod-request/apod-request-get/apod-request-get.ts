@@ -8,3 +8,11 @@ export interface ApodArray {
   url: string;
   copyright?: string;
 }
+
+export interface MyBeModel {
+  imgId: number;
+  imgTitle: string;
+  imgUrl: string;
+  imgDate: string;
+  imgDesc: string;
+}

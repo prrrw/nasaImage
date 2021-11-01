@@ -10,15 +10,50 @@
     >
         Search</button>
 </div>
+
+<div class="search-bar" style="right: inherit;">
+  <button (click) = "getFavImg()">
+    Show Like Image
+  </button>
+</div>
+<div *ngIf = "!isShowFavoriteImage; else showFavoriteImage">
+  <mat-card class="example-card">
+      No Favourite Image
+  </mat-card>
+</div>
+
+
+<ng-template #showFavoriteImage>
+  <mat-card class="example-card" *ngFor = "let favImg of beResponse">
+      <mat-card-header >
+        <mat-card-title> {{ favImg.imgTitle}}</mat-card-title>
+        <mat-card-subtitle> {{ favImg.imgDate}} </mat-card-subtitle>
+       
+          <button mat-icon-button (click) = "deleteFavImg(favImg.imgId)" color="warn"
+          aria-label="Disike Button">
+            <mat-icon>
+                remove_circle
+             </mat-icon>
+            
+          </button>
+      </mat-card-header>
+      <img mat-card-image src="{{ favImg.imgUrl}}" alt="Photo of {{ favImg.imgTitle}}">
+      <mat-card-content>
+        {{ favImg.imgDesc}}
+      </mat-card-content>
+  </mat-card>
+</ng-template>
+
 <div *ngIf = "!isResponseIsArray; else showArrayResult">
   <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title> {{ apodList[0].title}}</mat-card-title>
         <mat-card-subtitle>{{ apodList[0].date}}</mat-card-subtitle>
-        <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
+
+        <button mat-icon-button color="warn" class="button favorite" aria-label="Like Button"
+             target="_blank" (click) = "addFavImg(apodList[0])"> <mat-icon>favorite</mat-icon></button>
       </mat-card-header>
+  
       <img mat-card-image src="{{ apodList[0].url}}" alt="Photo of {{ apodList[0].title}}">
       <mat-card-content>
         {{ apodList[0].explanation}}
@@ -31,8 +66,10 @@
         <mat-card-header >
           <mat-card-title> {{ apod.title}}</mat-card-title>
           <mat-card-subtitle>{{ apod.date}}</mat-card-subtitle>
-            <a  mat-icon-button color="warn" class="button favorite"aria-label="Like Button"
-             href="https://www.google.com/" target="_blank"> <mat-icon>favorite</mat-icon></a>
+
+          <button mat-icon-button color="warn" class="button favorite" aria-label="Like Button"
+             target="_blank" (click) = "addFavImg(apod)"> <mat-icon>favorite</mat-icon></button>
+            
         </mat-card-header>
         <img mat-card-image src="{{ apod.url}}" alt="Photo of {{ apod.title}}">
         <mat-card-content>
